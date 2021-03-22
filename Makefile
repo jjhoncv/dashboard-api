@@ -9,7 +9,7 @@ define network_ip
 endef
 
 install:
-	docker run \
+	@docker run \
 		-it \
 		--rm \
 		-v $(PWD)/app:/app \
@@ -17,9 +17,9 @@ install:
 		node:11-slim \
 		npm install
 
-
 db:
-	docker run \
+	@docker run \
+		-it \
 		-d \
 		--net=${NETWORK_NAME} \
 		--name dash-mysql \
@@ -28,11 +28,11 @@ db:
 		-p 3306:3306 \
 		-e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
 		mysql:5.6.40
-	docker container logs dash-mysql -f
+	@docker container logs dash-mysql -f
 
 start:
 	$(call network_ip)
-	docker run \
+	@docker run \
 		-d \
 		-it \
 		--rm \
@@ -48,7 +48,13 @@ start:
 		-w /app \
 		node:11-slim \
 		npm start
-	docker container logs dash-api -f
+	@make logs
+
+logs:
+	@docker container logs dash-api -f --tail=10
 
 stop:
-	docker rm -f dash-api
+	@docker rm -f dash-api
+
+deploy:
+	
