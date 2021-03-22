@@ -4,7 +4,7 @@
 sudo chmod -R 777 /home/ec2-user/dashboard-api
 
 #navigate into our working directory where we have all our github files
-cd /home/ec2-user/dashboard-api
+cd /home/ec2-user/dashboard-api/app
 
 #add npm and node to path
 export NVM_DIR="$HOME/.nvm"	
@@ -15,4 +15,4 @@ export NVM_DIR="$HOME/.nvm"
 npm install
 
 #start our node app in the background
-node app/src/index.ts > app.out.log 2> app.err.log < /dev/null & 
+npm run start > app.out.log 2> app.err.log < /dev/null & 
