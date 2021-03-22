@@ -9,18 +9,24 @@ Demo del proyecto [https://jjhoncv.github.io/dashboard](https://jjhoncv.github.i
 - Version de Typescript 4
 
 ### step 1
+dependencies
+```sh
+make install
+```
+
+### step 2
 up mysql
 ```sh
 make db
 ```
 
-### step 2
+### step 3
 up express api
 ```sh
 make start
 ```
 
-### step 3
+### extras
 down express api
 ```sh
 make stop
