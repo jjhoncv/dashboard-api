@@ -8,6 +8,16 @@ define network_ip
 	$(eval MYSQL_HOST := $(shell docker inspect -f '{{range .IPAM.Config}}{{.Gateway}}{{end}}' ${NETWORK_NAME} ))
 endef
 
+install:
+	docker run \
+		-it \
+		--rm \
+		-v $(PWD)/app:/app \
+		-w /app \
+		node:11-slim \
+		npm install
+
+
 db:
 	docker run \
 		-d \
