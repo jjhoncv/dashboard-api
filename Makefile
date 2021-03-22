@@ -4,6 +4,11 @@ MYSQL_USER			= root
 MYSQL_ROOT_PASSWORD	= my-secret-pw
 MYSQL_DATABASE		= dashboard
 
+define create_network
+	$(eval ID_NETWORK := $(shell docker network ls | grep $(NETWORK_NAME) | awk '{print $$1}'))
+	@if [ ! $(ID_NETWORK) ]; then docker network create $(NETWORK_NAME); fi
+endef
+
 define network_ip
 	$(eval MYSQL_HOST := $(shell docker inspect -f '{{range .IPAM.Config}}{{.Gateway}}{{end}}' ${NETWORK_NAME} ))
 endef
@@ -18,6 +23,7 @@ install:
 		npm install
 
 db:
+	$(call create_network)
 	@docker run \
 		-it \
 		-d \
@@ -28,9 +34,10 @@ db:
 		-p 3306:3306 \
 		-e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
 		mysql:5.6.40
-	@docker container logs dash-mysql -f
+	# @docker container logs dash-mysql -f
 
 start:
+	$(call create_network)
 	$(call network_ip)
 	@docker run \
 		-d \
@@ -54,7 +61,7 @@ logs:
 	@docker container logs dash-api -f --tail=10
 
 stop:
-	@docker rm -f dash-api
+	@docker stop dash-api
 
 deploy:
 	
