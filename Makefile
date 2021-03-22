@@ -1,8 +1,6 @@
 NETWORK_NAME		= dash-network
 
-MYSQL_USER			= root		
-MYSQL_ROOT_PASSWORD	= my-secret-pw
-MYSQL_DATABASE		= dashboard
+
 
 define create_network
 	$(eval ID_NETWORK := $(shell docker network ls | grep $(NETWORK_NAME) | awk '{print $$1}'))
@@ -32,7 +30,7 @@ db:
 		-u 1000:1000 \
 		-v ${PWD}/mysql/data:/var/lib/mysql \
 		-p 3306:3306 \
-		-e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
+		--env-file ./.env \
 		mysql:5.6.40
 	# @docker container logs dash-mysql -f
 
@@ -44,10 +42,7 @@ start:
 		-it \
 		--rm \
 		--name dash-api \
-		-e MYSQL_HOST=${MYSQL_HOST} \
-		-e MYSQL_USER=${MYSQL_USER} \
-		-e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
-		-e MYSQL_DATABASE=${MYSQL_DATABASE} \
+		--env-file ./.env \
 		-u 1000:1000 \
 		-p 7000:7000 \
 		--net=${NETWORK_NAME} \

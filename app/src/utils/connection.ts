@@ -5,6 +5,8 @@ export interface PromisifiedPool extends Omit<Pool, "query"> {
   query: QueryFunction | Function;
 }
 
+console.log('MYSQL_HOST', process.env.MYSQL_HOST)
+
 export const pool: PromisifiedPool = createPool({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,

@@ -1,7 +1,10 @@
 import express, { Application, Router } from "express";
 import cors from "cors";
-
+import * as dotenv from "dotenv";
 import { authRoutes } from "./routes";
+
+const pathEnv = "./../../.env";
+dotenv.config({ path: pathEnv });
 
 const App = () => {
   const app: Application = express();
@@ -21,8 +24,10 @@ const App = () => {
   const init = () => {
     middlewares();
     routes();
-    app.listen("7000");
-    console.log("server on port 7000 or http://localhost:7000");
+    app.listen(process.env.SERVER_PORT);
+    console.log(
+      "server on " + process.env.SERVER_HOST + ":" + process.env.SERVER_PORT
+    );
   };
 
   return {
