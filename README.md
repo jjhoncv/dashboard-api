@@ -1,5 +1,5 @@
 # dashboard-api
-express nodejs
+express js
 
 Demo del proyecto [https://jjhoncv.github.io/dashboard](https://jjhoncv.github.io/dashboard/) 
 
