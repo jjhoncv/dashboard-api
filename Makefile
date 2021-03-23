@@ -59,4 +59,4 @@ stop:
 	@docker stop dash-api
 
 env:
-	aws s3 cp app/.env s3://config.wdashboard.tk
+	aws s3 cp app/.env s3://config.wdashboard.tk/dashboard.api/

@@ -1,7 +1,6 @@
 import express, { Application, Router } from "express";
 import cors from "cors";
 import { authRoutes, homeRoutes } from "./routes";
-
 import "./utils/config";
 
 const App = () => {
