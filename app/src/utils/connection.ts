@@ -1,5 +1,6 @@
 import { createPool, Pool, QueryFunction } from "mysql";
 import { promisify } from "util";
+import "./config";
 
 export interface PromisifiedPool extends Omit<Pool, "query"> {
   query: QueryFunction | Function;
