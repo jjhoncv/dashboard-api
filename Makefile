@@ -30,7 +30,7 @@ db:
 		-u 1000:1000 \
 		-v ${PWD}/mysql/data:/var/lib/mysql \
 		-p 3306:3306 \
-		--env-file ./.env \
+		--env-file ./app/.env.local \
 		mysql:5.6.40
 	# @docker container logs dash-mysql -f
 
@@ -42,7 +42,7 @@ start:
 		-it \
 		--rm \
 		--name dash-api \
-		--env-file ./.env \
+		--env-file ./app/.env.local \
 		-u 1000:1000 \
 		-p 7000:7000 \
 		--net=${NETWORK_NAME} \
@@ -56,7 +56,4 @@ logs:
 	@docker container logs dash-api -f --tail=10
 
 stop:
-	@docker stop dash-api
-
-deploy:
-	
+	@docker stop dash-api	

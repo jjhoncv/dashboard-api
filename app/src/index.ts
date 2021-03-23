@@ -1,10 +1,7 @@
 import express, { Application, Router } from "express";
 import cors from "cors";
-import * as dotenv from "dotenv";
 import { authRoutes } from "./routes";
-
-const pathEnv = "./../../.env";
-dotenv.config({ path: pathEnv });
+import "./utils/config";
 
 const App = () => {
   const app: Application = express();
