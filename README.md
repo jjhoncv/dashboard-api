@@ -1,10 +1,12 @@
 # dashboard-api
 Express JS
 
-Demo del proyecto [https://jjhoncv.github.io/dashboard](https://jjhoncv.github.io/dashboard/) 
+Demo del proyecto [http://wdashboard.tk](http://wdashboard.tk) 
 
 ## Features
 
+- EC2 server
+- RDS MySQL
 - Version de Express JS 4
 - Version de Typescript 4
 - Version de MySQL 5.6

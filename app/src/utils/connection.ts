@@ -13,8 +13,6 @@ const params = {
   database: process.env.MYSQL_DATABASE,
 };
 
-console.log({ params });
-
 export const pool: PromisifiedPool = createPool(params);
 
 pool.query = promisify(pool.query);
