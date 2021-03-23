@@ -14,5 +14,8 @@ export NVM_DIR="$HOME/.nvm"
 #install node modules
 npm install
 
+#config dashboard-api
+aws s3 sync s3://config.wdashboard.tk .
+
 #start our node app in the background
 npm run build  > app.out.log 2> app.err.log < /dev/null & 

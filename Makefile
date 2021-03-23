@@ -56,4 +56,7 @@ logs:
 	@docker container logs dash-api -f --tail=10
 
 stop:
-	@docker stop dash-api	
+	@docker stop dash-api
+
+env:
+	aws s3 cp app/.env s3://config.wdashboard.tk
