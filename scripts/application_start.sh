@@ -6,7 +6,8 @@ sudo chmod -R 777 /home/ec2-user/dashboard-api
 cd /home/ec2-user/dashboard-api
 
 #mysql
-mysql -u admin -p 12345678 dashboard < ./bd.sql
+mysql --host=dashboardinstance.cvv2tyxpdxye.ap-northeast-1.rds.amazonaws.com --user=admin --password=12345678 -e ./bd.sql
+
 
 #navigate into our working directory where we have all our github files
 cd /home/ec2-user/dashboard-api/app

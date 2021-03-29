@@ -26,6 +26,7 @@ db:
 		-it \
 		-d \
 		--net=${NETWORK_NAME} \
+		-v $(PWD):/app \
 		--name dash-mysql \
 		-u 1000:1000 \
 		-v ${PWD}/mysql/data:/var/lib/mysql \
