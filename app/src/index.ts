@@ -1,6 +1,6 @@
 import express, { Application, Router } from "express";
 import cors from "cors";
-import { authRoutes, homeRoutes } from "./routes";
+import { authRoutes, homeRoutes, productRoutes } from "./routes";
 import "./utils/config";
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
 
   const routes = () => {
     const router: Router = Router();
+    router.use("/products", productRoutes);
     router.use("/auth", authRoutes);
     router.use("/", homeRoutes);
     app.use("/", router);

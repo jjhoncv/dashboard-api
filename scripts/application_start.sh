@@ -3,6 +3,11 @@
 #give permission for everything in the dashboard-api directory
 sudo chmod -R 777 /home/ec2-user/dashboard-api
 
+cd /home/ec2-user/dashboard-api
+
+#mysql
+mysql -u admin -p 12345678 dashboard < ./bd.sql
+
 #navigate into our working directory where we have all our github files
 cd /home/ec2-user/dashboard-api/app
 
